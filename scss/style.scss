@@ -1,0 +1,52 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: white;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: palevioletred;
+  height: 7.8125rem;
+}
+
+h1 {
+  display: flex;
+  justify-content: center;
+}
+
+.card-body {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.imgProducto {
+  width: 12.5rem;
+}
+
+.card-product {
+  width: 12.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-img-top {
+  width: 9.375rem;
+}
+
+.card-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/*# sourceMappingURL=style.scss.map */
