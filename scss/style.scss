@@ -5,15 +5,20 @@
 }
 
 body {
-  background-color: white;
+  background-color: rgb(157, 206, 161);
+}
+
+main {
+  display: flex;
 }
 
 header {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  background-color: palevioletred;
+  justify-content: center;
+  background-color: rgb(2, 95, 17);
   height: 7.8125rem;
+  color: white;
 }
 
 h1 {
@@ -23,19 +28,18 @@ h1 {
 
 .card-body {
   display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
+  flex-direction: row;
 }
 
-.imgProducto {
-  width: 12.5rem;
-}
-
-.card-product {
+/* .imgProducto{
+    width: 12.5rem;
+} */
+.card-product div {
   width: 12.5rem;
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: white;
 }
 
 .card-img-top {
