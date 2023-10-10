@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function() {
-  //PRODUCTOS
+    //PRODUCTOS
   // CONSTRUCTOR DE PRODUCTOS
   class nuevoProducto {
     constructor(id, nombre, precio, descripcion) {
@@ -19,6 +19,7 @@ document.addEventListener("DOMContentLoaded", function() {
   const PRODUCTO5 = new nuevoProducto(5, "LECHE", 900, 'La Serenísima 3% - 1lt');
 
   const productos = [PRODUCTO1, PRODUCTO2, PRODUCTO3, PRODUCTO4, PRODUCTO5];
+
 
   //DOM
   const cardBody = document.getElementById("card-body");
@@ -45,21 +46,42 @@ document.addEventListener("DOMContentLoaded", function() {
   const carritoDom = document.getElementById("carrito");
   let carrito = [];
 
+
+
+      // Recuperar el carrito guardado en localStorage
+  const carritoGuardado = localStorage.getItem('carrito');
+  if (carritoGuardado) {
+    carrito = JSON.parse(carritoGuardado);
+    // Actualizar el contenido del carrito en el DOM
+    agregarAlCarrito();
+  }
+
   // Función para agregar al carrito
   function agregarAlCarrito(id) {
-    const existe = carrito.some(producto => producto.id === parseInt(id));
+    const btnAgregado = document.querySelectorAll(".agregado");
+    btnAgregado.forEach((elegido) => {
+    elegido.addEventListener('click', (e) => {
+      // Obtener el id del producto del botón
+      const idProducto = e.target.id;
+      // Llamar a la función agregarAlCarrito con el id del producto
+      agregarAlCarrito(idProducto);
+    });
 
-    if (existe) {
-      carrito.map(producto => {
-        if (producto.id === parseInt(id)) {
-          producto.cantidad += 1;
-        }
-      });
-    } else {
+    //ESTA PARTE DA ERROR = NO SE PUEDEN LEER LAS PROPIEDADES DE NULL (id)
+    // const existe = carrito.some(producto => producto.id === parseInt(id));
+    
+  
+    // if (existe) {
+    //   carrito.map(producto => {
+    //     if (producto.id === parseInt(id)) {
+    //       producto.cantidad += 1;
+    //     }
+    //   });
+    // } else {
+    
+    // }
       let productoEncontrado = productos.find(producto => producto.id === parseInt(id));
       carrito.push(productoEncontrado);
-    }
-    
     // Actualizar el contenido del carrito
     if (carritoDom) {
       carritoDom.innerHTML = "";
@@ -95,24 +117,5 @@ document.addEventListener("DOMContentLoaded", function() {
     } else {
       console.error("El elemento con ID 'carrito' no existe en el DOM");
     }
-  };
-
-  const btnAgregado = document.querySelectorAll(".agregado");
-  btnAgregado.forEach((elegido) => {
-    elegido.addEventListener('click', (e) => {
-      // Obtener el id del producto del botón
-      const idProducto = e.target.id;
-      // Llamar a la función agregarAlCarrito con el id del producto
-      agregarAlCarrito(idProducto);
-    });
   });
-  
-
-  // Recuperar el carrito guardado en localStorage
-  const carritoGuardado = localStorage.getItem('carrito');
-  if (carritoGuardado) {
-    carrito = JSON.parse(carritoGuardado);
-    // Actualizar el contenido del carrito en el DOM
-    agregarAlCarrito();
-  }
-});
+  }})
