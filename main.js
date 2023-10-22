@@ -1,29 +1,10 @@
 document.addEventListener("DOMContentLoaded", function() {
+
   // Recuperar el carrito guardado en localStorage
     let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
   //AGREGAR AL CARRITO
     const carritoDom = document.getElementById("carrito");
     renderizarCarrito();
-    //PRODUCTOS
-  // CONSTRUCTOR DE PRODUCTOS
-  class nuevoProducto {
-    constructor(id, nombre, precio, descripcion, img) {
-      this.id = id;
-      this.nombre = nombre;
-      this.descripcion = descripcion;
-      this.precio = precio;
-      this.cantidad = 1;
-      this.img = img;
-    }
-  }
-  // PRODUCTOS DISPONIBLES
-  const PRODUCTO1 = new nuevoProducto(1, "YERBA MATE", 1200, 'Mañanita - 1kg', "./assets/img/yerbanueva.jpg");
-  const PRODUCTO2 = new nuevoProducto(2, "ARROZ", 600, 'Doble Carolina - 1kg', "./assets/img/arroznueva.jpg")
-  const PRODUCTO3 = new nuevoProducto(3, "JABON LIQUIDO", 1800, 'Skip - 5lts', "./assets/img/jabonnueva.jpg");
-  const PRODUCTO4 = new nuevoProducto(4, "ACEITE", 1000, 'Natura - 900ml', "./assets/img/aceitenueva.jpg");
-  const PRODUCTO5 = new nuevoProducto(5, "LECHE", 900, 'La Serenísima 3% - 1lt', "./assets/img/lechenueva.jpg");
-
-  const productos = [PRODUCTO1, PRODUCTO2, PRODUCTO3, PRODUCTO4, PRODUCTO5];
 
   //DOM
   const cardBody = document.getElementById("card-body");
@@ -45,9 +26,11 @@ document.addEventListener("DOMContentLoaded", function() {
       </div>
     `;
     cardBody.appendChild(div);
-  }
+  };
 
     const btnAgregado = document.querySelectorAll(".agregado");
+
+    //agregar al carrito
     btnAgregado.forEach((elegido) => {
     elegido.addEventListener('click', (e) => {
       // Obtener el id del producto del botón
@@ -65,6 +48,7 @@ document.addEventListener("DOMContentLoaded", function() {
         }).showToast();
     })});
 
+    //eliminar del carrito
     const btnEliminar = document.querySelectorAll(".eliminar");
     btnEliminar.forEach((elegido) => {
     elegido.addEventListener('click', (e) => {
@@ -89,7 +73,9 @@ document.addEventListener("DOMContentLoaded", function() {
     };
     renderizarCarrito();
   
-  }
+  };
+
+  //funcion para eliminar del carrito
   function eliminarDelCarrito(id) {
     const producto = carrito.find(producto=> producto.id ===parseInt(id));
     if(producto){
@@ -97,11 +83,13 @@ document.addEventListener("DOMContentLoaded", function() {
         producto.cantidad-=1;
       }else{
         carrito= carrito.filter(item => item.id !== parseInt(id));
-      }
+      };
       renderizarCarrito();
     }
     
-  }
+  };
+
+  //renderizar carrito
   function renderizarCarrito(){
         // Actualizar el contenido del carrito
           carritoDom.innerHTML = "";
@@ -130,11 +118,17 @@ document.addEventListener("DOMContentLoaded", function() {
           carritoDom.appendChild(divTotal);
           // Almacenar en localStorage
           localStorage.setItem('carrito', JSON.stringify(carrito));
-  }}
+  };
   
   
-  const btnVaciarCarrito = document.querySelector("#vaciarCarrito"));
+  //vaciar carrito
+  const btnVaciarCarrito = document.querySelector("#vaciarCarrito");
+  btnVaciarCarrito.addEventListener('click', (e)=>{
+  localStorage.clear();
+  carrito=[];
+  renderizarCarrito();
+});
 
-  btnVaciarCarrito.addEventListener(click, (e)=>{
-    
-  })
+
+//aca cierra el domcontentloaded
+});

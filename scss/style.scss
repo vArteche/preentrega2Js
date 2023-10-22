@@ -5,7 +5,16 @@
 }
 
 body {
-  background-color: #F5EEC8;
+  background-color: #D0D4CA;
+  display: grid;
+  grid-template-columns: repeat(5, auto);
+  grid-template-rows: repeat(5, auto);
+  grid-template-areas: 
+  "hd hd hd hd hd"
+  "ma ma ma ma ma"
+  "ma ma ma ma ma"
+  "ma ma ma ma ma"
+  "ft ft ft ft ft";
 }
 
 header {
@@ -14,7 +23,7 @@ header {
   justify-content: center;
   background-color: #A7D397;
   height: 7.8125rem;
-  color: white;
+  color: #555843;
   grid-area: hd;
 }
 
@@ -22,23 +31,24 @@ h1 {
   display: flex;
   justify-content: center;
 }
-
+main{
+  grid-area: ma;
+  display: flex;
+  justify-content: space-between;
+}
 .card-body {
-  // display: flex;
-  // flex-direction: row;
-  grid-area: cb;
+  display: flex;
+  flex-direction: row;
 }
-.carrito{
-  grid-area: ca;
-}
-.card-product div {
-  width: 12.5rem;
+.card-product {
+  width: 18.75rem;
+  div {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #555843;
-  color: white;
-}
+  background-color: #F5EEC8;
+  color: #555843;
+}}
 
 .card-img-top {
   width: 9.375rem;
@@ -49,15 +59,22 @@ h1 {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  border: #555843 solid .125rem;
 }
 
 .imgProducto{
   img{
-    width: 6.25rem;
+    max-width: 6.25rem;
   }
 }
+
 
 /*# sourceMappingURL=style.scss.map */
 footer{
   grid-area: ft;
+  height: 9.375rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  background-color: #A7D397;
 }
