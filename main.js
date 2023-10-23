@@ -124,9 +124,66 @@ document.addEventListener("DOMContentLoaded", function() {
   //vaciar carrito
   const btnVaciarCarrito = document.querySelector("#vaciarCarrito");
   btnVaciarCarrito.addEventListener('click', (e)=>{
-  localStorage.clear();
-  carrito=[];
-  renderizarCarrito();
+    Swal.fire({
+      title: 'Deseas vaciar el carrito?',
+      text: "No podrás revertir esto!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Sí, vacíalo!',
+      cancelButtonText : 'Cancelar',
+    }).then((result) => {
+      if (result.isConfirmed) {
+          localStorage.clear();
+          carrito=[];
+          renderizarCarrito();
+        Swal.fire(
+          'Carrito eliminado',
+          'Ahora puedes iniciar una nueva compra',
+        );
+      }
+    })
+
+
+});
+
+//finalizar compra
+const btnFinalizar= document.querySelector('#checkout');
+btnFinalizar.addEventListener('click', (e)=>{
+  Swal.fire({
+    title: 'Ingresa tu usuario de GitHub, necesitamos validar tu identidad.',
+    input: 'text',
+    inputAttributes: {
+      autocapitalize: 'off'
+    },
+    showCancelButton: true,
+    confirmButtonText: 'Look up',
+    showLoaderOnConfirm: true,
+    preConfirm: (login) => {
+      return fetch(`//api.github.com/users/${login}`)
+        .then(response => {
+          if (!response.ok) {
+            throw new Error(response.statusText)
+          }
+          return response.json()
+        })
+        .catch(error => {
+          Swal.showValidationMessage(
+            `Request failed: ${error}`
+          )
+        })
+    },
+    allowOutsideClick: () => !Swal.isLoading()
+  }).then((result) => {
+    if (result.isConfirmed) {
+      Swal.fire({
+        title: `Gracias por tu compra, ${result.value.login}!`,
+        imageUrl: result.value.avatar_url
+      })
+    }
+  })
+  DOWNLOAD 
 });
 
 
