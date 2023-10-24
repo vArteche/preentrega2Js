@@ -41,7 +41,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
         text:"Se añadió 1 producto al carrito",
         style: {
-          background: "#A7D397"
+          background: "#F9B572"
         },
         duration: 3000
         
@@ -49,13 +49,17 @@ document.addEventListener("DOMContentLoaded", function() {
     })});
 
     //eliminar del carrito
-    const btnEliminar = document.querySelectorAll(".eliminar");
+    function prodEliminado(){
+          const btnEliminar = document.querySelectorAll(".eliminar");
     btnEliminar.forEach((elegido) => {
     elegido.addEventListener('click', (e) => {
       // Obtener el id del producto del botón
       const idProducto = e.target.id;
+      console.log(idProducto);
       eliminarDelCarrito(idProducto);
     })});
+    }
+
 
   // Función para agregar al carrito
   function agregarAlCarrito(id) {
@@ -85,8 +89,7 @@ document.addEventListener("DOMContentLoaded", function() {
         carrito= carrito.filter(item => item.id !== parseInt(id));
       };
       renderizarCarrito();
-    }
-    
+    };
   };
 
   //renderizar carrito
@@ -106,7 +109,7 @@ document.addEventListener("DOMContentLoaded", function() {
                   <p>${producto.descripcion}</p>
                   <p>$${producto.precio}</p>
                   <p>Cantidad: ${producto.cantidad}</p>
-                  <button class="eliminar">Eliminar</button>
+                  <button id= ${producto.id} class="eliminar">Eliminar</button>
                 </div>
               </div>
             `;
@@ -118,6 +121,7 @@ document.addEventListener("DOMContentLoaded", function() {
           carritoDom.appendChild(divTotal);
           // Almacenar en localStorage
           localStorage.setItem('carrito', JSON.stringify(carrito));
+          prodEliminado();
   };
   
   

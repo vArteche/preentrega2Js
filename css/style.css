@@ -75,4 +75,32 @@ footer {
   background-color: #A7D397;
 }
 
+.eliminar {
+  background-color: red;
+  padding: 0.625rem;
+  border-radius: 0.3125rem;
+  font-weight: bold;
+}
+
+.agregado {
+  background-color: #F9B572;
+  padding: 0.625rem;
+  border-radius: 0.3125rem;
+  font-weight: bold;
+}
+
+#vaciarCarrito {
+  background-color: red;
+  padding: 0.625rem;
+  border-radius: 0.3125rem;
+  font-weight: bold;
+}
+
+#checkout {
+  background-color: #F9B572;
+  padding: 0.625rem;
+  border-radius: 0.3125rem;
+  font-weight: bold;
+}
+
 /*# sourceMappingURL=style.css.map */

@@ -78,3 +78,32 @@ footer{
   justify-content: space-around;
   background-color: #A7D397;
 }
+
+//botones
+.eliminar{
+  background-color: red;
+  padding: .625rem;
+  border-radius: .3125rem;
+  font-weight: bold;
+}
+
+.agregado{
+  background-color: #F9B572;
+  padding: .625rem;
+  border-radius: .3125rem;
+  font-weight: bold;
+}
+
+#vaciarCarrito{
+  background-color: red;
+  padding: .625rem;
+  border-radius: .3125rem;
+  font-weight: bold;
+}
+
+#checkout{
+  background-color: #F9B572;
+  padding: .625rem;
+  border-radius: .3125rem;
+  font-weight: bold;
+}
