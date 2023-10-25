@@ -1,0 +1,7 @@
+[
+    {"id":1, "nombre":"YERBA MATE", "descripcion":"Mañanita - 1kg", "precio":1970, "cantidad":1, "img":"./assets/img/yerbanueva.jpg"},
+    {"id":2, "nombre":"ARROZ", "descripcion":"Doble Carolina- 1kg", "precio":820, "cantidad":1, "img":"./assets/img/arroznueva.jpg"},
+    {"id":3, "nombre":"JABON LÍQUIDO", "descripcion":"Skip - 5lts", "precio":2050, "cantidad":1, "img":"./assets/img/jabonnueva.jpg"},
+    {"id":4, "nombre":"ACEITE", "descripcion":"Natura - 900ml", "precio":1750, "cantidad":1, "img":"./assets/img/aceitenueva.jpg"},
+    {"id":5, "nombre":"LECHE", "descripcion":"La Serenísima 3% - 1lt", "precio":900, "cantidad":1, "img":"./assets/img/lechenueva.jpg"}   
+]

@@ -8,10 +8,17 @@ document.addEventListener("DOMContentLoaded", function() {
 
   //DOM
   const cardBody = document.getElementById("card-body");
+  
+  // fetch para productos
+  fetch("productos.json")
+        .then(Response => Response.json())
+        .then(data => mostrarProductos(data));
+        
+
 
   //LISTA DE PRODUCTOS
-  for (const producto of productos) {
-    const div = document.createElement('div');
+  function mostrarProductos(productos){
+    productos.forEach(producto =>{const div = document.createElement('div');
     div.innerHTML = `
       <div class="card-product">
         <div class="card-content">
@@ -26,15 +33,17 @@ document.addEventListener("DOMContentLoaded", function() {
       </div>
     `;
     cardBody.appendChild(div);
+  }); 
   };
 
+  
     const btnAgregado = document.querySelectorAll(".agregado");
-
     //agregar al carrito
     btnAgregado.forEach((elegido) => {
     elegido.addEventListener('click', (e) => {
       // Obtener el id del producto del botón
       const idProducto = e.target.id;
+      console.log(idProducto)
       // Llamar a la función agregarAlCarrito con el id del producto
       agregarAlCarrito(idProducto);
       Toastify({
