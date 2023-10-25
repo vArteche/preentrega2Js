@@ -10,9 +10,9 @@ document.addEventListener("DOMContentLoaded", function() {
   const cardBody = document.getElementById("card-body");
   
   // fetch para productos
-  fetch("productos.json")
+  fetch("./productos.json")
         .then(Response => Response.json())
-        .then(data => mostrarProductos(data));
+        .then(productos => mostrarProductos(productos));
         
 
 
@@ -34,9 +34,7 @@ document.addEventListener("DOMContentLoaded", function() {
     `;
     cardBody.appendChild(div);
   }); 
-  };
 
-  
     const btnAgregado = document.querySelectorAll(".agregado");
     //agregar al carrito
     btnAgregado.forEach((elegido) => {
@@ -45,7 +43,7 @@ document.addEventListener("DOMContentLoaded", function() {
       const idProducto = e.target.id;
       console.log(idProducto)
       // Llamar a la función agregarAlCarrito con el id del producto
-      agregarAlCarrito(idProducto);
+      agregarAlCarrito(idProducto, productos);
       Toastify({
 
         text:"Se añadió 1 producto al carrito",
@@ -56,6 +54,10 @@ document.addEventListener("DOMContentLoaded", function() {
         
         }).showToast();
     })});
+  };
+
+
+  
 
     //eliminar del carrito
     function prodEliminado(){
@@ -71,7 +73,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
   // Función para agregar al carrito
-  function agregarAlCarrito(id) {
+  function agregarAlCarrito(id, productos) {
     const existe = carrito.some(producto => producto.id === parseInt(id));
     if (existe) {
       carrito.map(producto => {
@@ -196,7 +198,6 @@ btnFinalizar.addEventListener('click', (e)=>{
       })
     }
   })
-  DOWNLOAD 
 });
 
 
